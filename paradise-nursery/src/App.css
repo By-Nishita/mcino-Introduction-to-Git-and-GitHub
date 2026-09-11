@@ -1,0 +1,122 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --deep-green: #1c3829;
+  --sage: #7c9070;
+  --cream: #f5f1e8;
+  --terracotta: #c67c4e;
+  --gold: #e8b54d;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Work Sans', sans-serif;
+}
+
+/* ---------- Landing page ---------- */
+.landing-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-image:
+    linear-gradient(120deg, rgba(20, 41, 27, 0.78) 0%, rgba(20, 41, 27, 0.35) 55%, rgba(20, 41, 27, 0.75) 100%),
+    url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.landing-content {
+  max-width: 640px;
+  margin-left: 8vw;
+  color: var(--cream);
+}
+
+.landing-content .eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.landing-content h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+
+.landing-content p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.25rem;
+  max-width: 30ch;
+  color: rgba(245, 241, 232, 0.9);
+}
+
+.get-started-button {
+  background-color: var(--terracotta);
+  color: var(--cream);
+  border: none;
+  padding: 0.9rem 2.1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.get-started-button:hover {
+  background-color: #a9633a;
+}
+
+/* ---------- About Us ---------- */
+.about-us-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.about-us-container h1 {
+  font-family: var(--font-display);
+  color: var(--deep-green);
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-us-container p {
+  font-family: var(--font-body);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  color: #2e3d2f;
+}
+
+/* ---------- Shared header/nav ---------- */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2rem;
+  background-color: var(--deep-green);
+  color: var(--cream);
+}
+
+.nav-bar h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+.nav-bar .nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--font-body);
+}
+
+.cart-count {
+  background-color: var(--terracotta);
+  color: var(--cream);
+  border-radius: 50%;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.85rem;
+  margin-left: 0.4rem;
+}
