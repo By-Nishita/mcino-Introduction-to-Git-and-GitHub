@@ -1,55 +1,88 @@
-import React, { useState } from 'react';
-import ProductList from './components/ProductList';
-import AboutUs from './components/AboutUs';
-import './App.css';
-
-function LandingPage({ onGetStarted }) {
-  return (
-    <div className="landing-page">
-      <div className="landing-content">
-        <p className="eyebrow">Paradise Nursery</p>
-        <h1>Bring nature home.</h1>
-        <p>
-          Hand-raised houseplants, delivered with a care guide, so your space
-          can breathe a little greener.
-        </p>
-        <button className="get-started-button" onClick={onGetStarted}>
-          Get Started
-        </button>
-      </div>
-    </div>
-  );
-}
+import { useState } from "react";
+import ProductList from "./ProductList";
+import CartItem from "./CartItem";
+import AboutUs from "./AboutUs";
+import "./App.css";
 
 function App() {
-  // 'landing' | 'about' | 'products' | 'cart'
-  const [view, setView] = useState('landing');
+  const [page, setPage] = useState("home");
 
-  if (view === 'landing') {
-    return <LandingPage onGetStarted={() => setView('products')} />;
-  }
+  const goToPlants = () => {
+    setPage("plants");
+  };
 
-  if (view === 'about') {
+  const goToCart = () => {
+    setPage("cart");
+  };
+
+  const goToHome = () => {
+    setPage("home");
+  };
+
+  if (page === "plants") {
     return (
-      <>
-        <nav className="nav-bar">
-          <h2 onClick={() => setView('landing')} style={{ cursor: 'pointer' }}>
-            Paradise Nursery
-          </h2>
-          <div className="nav-icons">
-            <span onClick={() => setView('products')} style={{ cursor: 'pointer' }}>
-              Plants
-            </span>
-          </div>
-        </nav>
-        <AboutUs />
-      </>
+      <ProductList
+        onCartClick={goToCart}
+        onHomeClick={goToHome}
+      />
     );
   }
 
-  // products or cart are both handled inside ProductList,
-  // which toggles its own internal cart view.
-  return <ProductList onAboutUs={() => setView('about')} />;
+  if (page === "cart") {
+    return <CartItem onContinueShopping={goToPlants} />;
+  }
+
+  return (
+    <div className="home-page">
+      <nav className="home-navbar">
+        <div className="navbar-brand">
+          🌿 Paradise Nursery
+        </div>
+
+        <div className="navbar-links">
+          <button onClick={goToHome}>Home</button>
+          <button onClick={goToPlants}>Plants</button>
+          <button onClick={goToCart}>🛒 Cart</button>
+        </div>
+      </nav>
+
+      <section className="landing-page">
+        <div className="landing-content">
+          <p className="welcome-text">
+            Welcome to
+          </p>
+
+          <h1>Paradise Nursery</h1>
+
+          <h2>
+            Bring Nature Into Your Home
+          </h2>
+
+          <p className="landing-description">
+            Discover beautiful and healthy houseplants
+            for every corner of your home. Explore our
+            collection and find the perfect plant for you.
+          </p>
+
+          <button
+            className="get-started-button"
+            onClick={goToPlants}
+          >
+            Get Started
+          </button>
+        </div>
+
+        <div className="landing-image">
+          <img
+            src="/src/assets/hero.png"
+            alt="Beautiful houseplants"
+          />
+        </div>
+      </section>
+
+      <AboutUs />
+    </div>
+  );
 }
 
 export default App;
